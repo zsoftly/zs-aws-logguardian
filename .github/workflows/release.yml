@@ -49,6 +49,7 @@ jobs:
           path: |
             dist/logguardian-compliance.zip
             dist/logguardian-compliance-${{ github.ref_name }}.zip
+          retention-days: 1
 
   build-container:
     name: Build Container Binary
@@ -86,6 +87,7 @@ jobs:
             build/logguardian-container
             build/logguardian-container-${{ github.ref_name }}
             build/logguardian-container-${{ github.ref_name }}.tar.gz
+          retention-days: 1
 
   publish-docker:
     name: Publish Docker Image

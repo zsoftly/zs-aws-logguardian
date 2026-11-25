@@ -130,13 +130,6 @@ jobs:
           mkdir -p dist
           cd build && zip -r ../dist/logguardian-compliance.zip bootstrap
 
-      - name: Upload Lambda deployment artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: lambda-deployment-package
-          path: dist/logguardian-compliance.zip
-          retention-days: 30
-
       - name: Check Lambda binary size
         run: |
           echo "## AWS Lambda Binary Size Report" >> $GITHUB_STEP_SUMMARY
@@ -231,13 +224,6 @@ jobs:
             -ldflags="-s -w -X main.version=${{ github.sha }}" \
             -o build/logguardian-container \
             ./cmd/container
-
-      - name: Upload container binary artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: container-binary
-          path: build/logguardian-container
-          retention-days: 30
 
       - name: Check container binary size
         run: |
